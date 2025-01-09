@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS = -Iinclude -Wall -Wextra -g -lcrypto
+CFLAGS = -Iinclude -Wall -Wextra -g
 SRC = $(wildcard src/*.c)
 INCLUDE_SRC = $(wildcard include/*.c)
 TEST_SRC = $(wildcard tests/*.c)
@@ -17,7 +17,7 @@ build/vine: $(OBJ) $(INCLUDE_OBJ)
 
 # Test build target
 build/test: $(TEST_OBJ) $(INCLUDE_OBJ)
-	$(CC) $(CFLAGS) -o $@ $^
+	$(CC) $(CFLAGS) -o $@ $^ -lcunit -lcrypto
 
 # Compile source files
 build/obj/%.o: src/%.c | $(BUILD_DIRS)
